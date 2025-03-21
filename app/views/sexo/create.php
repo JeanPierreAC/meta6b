@@ -10,7 +10,7 @@
 
     <form action="../../controllers/SexoController.php?action=create" method="POST" 
           class="bg-white p-6 rounded-lg shadow-md w-80">
-        <h2 class="text-xl font-semibold mb-4 text-center">Crear Nuevo Sexo</h2>
+        <h2 class="text-xl font-semibold mb-4 text-center">Crear nuevo sexo</h2>
 
         <label for="nombre" class="block text-gray-700 mb-1">Nombre:</label>
         <input type="text" name="nombre" id="nombre" required 
