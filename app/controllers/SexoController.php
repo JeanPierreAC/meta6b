@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <?php
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-// En SexoController.php
+
+// Incluir las dependencias necesarias
 require_once $_SERVER['DOCUMENT_ROOT'] . '/meta6b/config/database.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/meta6b/app/models/Sexo.php';
 
@@ -16,7 +16,6 @@ class SexoController {
         $this->sexo = new Sexo($this->db);
     }
 
-    // Mostrar todos los sexos
     public function index() {
         $sexos = $this->sexo->read();
         require_once '../app/views/sexo/index.php';
@@ -24,12 +23,11 @@ class SexoController {
 
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo "Formulario recibido";  // Verificar si llega el formulario
             if (isset($_POST['nombre'])) {
                 $this->sexo->nombre = $_POST['nombre'];
                 if ($this->sexo->create()) {
-                    echo "Sexo creado exitosamente";
-                    // Redirigir o mostrar un mensaje de éxito
+                    header('Location: index.php?msg=created');
+                    exit;
                 } else {
                     echo "Error al crear el sexo";
                 }
@@ -37,13 +35,11 @@ class SexoController {
                 echo "Faltan datos";
             }
         } else {
-            echo "Método incorrecto";  // Verificar que el formulario no se envíe con GET
+            echo "Método incorrecto";
         }
-        die();  // Detener la ejecución para ver los mensajes
     }
 
     public function edit($id) {
-        // Pasar el ID al modelo antes de llamar a readOne()
         $this->sexo->id = $id;
         $sexo = $this->sexo->readOne();
 
@@ -55,7 +51,6 @@ class SexoController {
     }
 
     public function eliminar($id) {
-        // Pasar el ID al modelo antes de llamar a readOne()
         $this->sexo->id = $id;
         $sexo = $this->sexo->readOne();
 
@@ -68,33 +63,28 @@ class SexoController {
 
     public function update() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo "Formulario recibido";  // Verificar si llega el formulario
-            if (isset($_POST['nombre'])) {
+            if (isset($_POST['nombre']) && isset($_POST['id'])) {
                 $this->sexo->nombre = $_POST['nombre'];
                 $this->sexo->id = $_POST['id'];
                 if ($this->sexo->update()) {
-                    echo "Sexo actualizado exitosamente";
-                    // Redirigir o mostrar un mensaje de éxito
+                    header('Location: index.php?msg=updated');
+                    exit;
                 } else {
-                    echo "Error al crear el sexo";
+                    echo "Error al actualizar el sexo";
                 }
             } else {
                 echo "Faltan datos";
             }
         } else {
-            echo "Método incorrecto";  // Verificar que el formulario no se envíe con GET
+            echo "Método incorrecto";
         }
-        die();  // Detener la ejecución para ver los mensajes
     }
 
-    // Eliminar un sexo
     public function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['id'])) {
                 $this->sexo->id = $_POST['id'];
                 if ($this->sexo->delete()) {
-                    echo "Sexo borrado exitosamente";
-                    die();
                     header('Location: index.php?msg=deleted');
                     exit;
                 } else {
@@ -105,9 +95,8 @@ class SexoController {
                 echo "Faltan datos";
             }
         } else {
-            echo "Método incorrecto";  // Verificar que el formulario no se envíe con GET
+            echo "Método incorrecto";
         }
-        die();  // Detener la ejecución para ver los mensajes
     }
 }
 
@@ -115,7 +104,6 @@ class SexoController {
 if (isset($_GET['action'])) {
     $controller = new SexoController();
 
-    echo "hola";
     switch ($_GET['action']) {
         case 'create':
             $controller->create();
