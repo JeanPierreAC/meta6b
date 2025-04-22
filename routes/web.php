@@ -4,7 +4,7 @@ session_start();
 require_once '../app/controllers/SexoController.php';
 
 $requestUri = $_SERVER["REQUEST_URI"];
-$basePath = '/meta6b';
+$basePath = '/meta6b/';
 
 // Remover el prefijo basePath
 $route = str_replace($basePath, '', $requestUri);
