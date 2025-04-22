@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Sexos</title>
-   <link rel="stylesheet" href="/meta6b/public/css/style.css">
+    <link rel="stylesheet" href="/meta6b/public/css/style.css">
 </head>
 <body>
 
@@ -27,17 +27,25 @@
                         <td><?php echo htmlspecialchars($sexo['id']); ?></td>
                         <td><?php echo htmlspecialchars($sexo['nombre']); ?></td>
                         <td>
-    <a href="/meta6b/sexo/edit?id=<?php echo htmlspecialchars($sexo['id']); ?>">
-        <button>Editar</button>
-    </a>
-    <a href="/meta6b/sexo/eliminar?id=<?php echo htmlspecialchars($sexo['id']); ?>" 
-       onclick="return confirm('¿Estás seguro de eliminar este registro?');">
-        <button>Eliminar</button>
-    </a>
-@@ -46,6 +46,6 @@
+                            <a href="/meta6b/sexo/edit?id=<?php echo htmlspecialchars($sexo['id']); ?>">
+                                <button>Editar</button>
+                            </a>
+                            <a href="/meta6b/sexo/eliminar?id=<?php echo htmlspecialchars($sexo['id']); ?>" 
+                               onclick="return confirm('¿Estás seguro de eliminar este registro?');">
+                                <button>Eliminar</button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="3">No hay registros disponibles.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
     </table>
 </div>
 
-<script src="/meta6b/js/script.js"></script>
+<script src="/meta6b/public/js/script.js"></script>
 </body>
 </html>
