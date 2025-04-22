@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
-    <form action="/meta6b/sexo/delete" method="POST"
+    <form action="/meta6b/public/sexo/delete" method="POST"
           class="bg-white p-8 rounded-2xl shadow-2xl w-96 border border-gray-200 relative animate-fadeIn">
         <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-full shadow-md text-sm font-semibold">
             Eliminar Registro
