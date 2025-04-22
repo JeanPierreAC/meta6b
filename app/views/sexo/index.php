@@ -38,6 +38,6 @@
     </table>
 </div>
 
-<script src="/meta6b/public/js/script.js"></script>
+<script src="/meta6b/js/script.js"></script>
 </body>
 </html>
